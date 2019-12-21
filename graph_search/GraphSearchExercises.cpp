@@ -48,12 +48,11 @@
 // a set of the unique edges only.
 int GridGraph::countEdges() const {
   int numEdges = 0;
+  for (const auto &pair : adjacencyMap) {
+    numEdges += pair.second.size();
+  }
 
-  // =======================================================================
-  // TODO: Your code here!
-  // =======================================================================
-
-  return numEdges;
+  return numEdges/2;
 }
 
 // GridGraph::removePoint:
