@@ -228,7 +228,7 @@ TEST_CASE("Testing graphBFS when start==goal:", "[weight=1][ex2]") {
 
 }
 
-/*
+
 // ========================================================================
 // Test: graphBFS with normal maze
 // ========================================================================
@@ -597,4 +597,3 @@ TEST_CASE("Testing puzzleBFS on a random puzzle:", "[weight=1][ex3]") {
   }
 
 }
-*/
