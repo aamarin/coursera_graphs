@@ -286,28 +286,19 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
       dequeuedSet.insert(curPoint);
     }
 
-    // =====================================================================
-    // TODO: Your code here!
     // We'll need to loop over the neighbors that are the points adjacent to curPoint.
     // Get a copy of the set of neighbors we're going to loop over.
-    GridGraph::NeighborSet neighbors = graph.adjacencyMap.at(curPoint); // Change this...
-    // =====================================================================
+    GridGraph::NeighborSet neighbors = graph.adjacencyMap.at(curPoint);
 
     for (auto neighbor : neighbors) {
 
-      // ==================================================================
-      // TODO: Your code here!
       // Check whether the neighbor has already been visited.
-      bool neighborWasAlreadyVisited = visitedSet.count(neighbor); // Change this...
-      // ==================================================================
+      bool neighborWasAlreadyVisited = visitedSet.count(neighbor);
 
       // If this adjacent vertex has NOT been visited before, we will visit it now.
       // If it HAS been visited before, we do nothing and continue to loop.
       // This way, we avoid enqueueing the same vertex more than once.
       if (!neighborWasAlreadyVisited) {
-
-        // ================================================================
-        // TODO: Your code here!
 
         // Record that the curPoint is the predecessor of the neighbor point,
         // since curPoint has just led to the discovery of this neighbor for
@@ -316,10 +307,9 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
 
         // Add neighbor to the visited set.
         visitedSet.insert(neighbor);
+
         // Push neighbor into the exploration queue.
         exploreQ.push(neighbor);
-        
-        // ================================================================
 
         // Check if we've taken too many steps so far.
         // The shortest-path distance to this neighbor is the shortest-path distance
@@ -500,28 +490,16 @@ std::list<PuzzleState> puzzleBFS(const PuzzleState& start, const PuzzleState& go
       dequeuedSet.insert(curState);
     }
 
-    // =====================================================================
-    // TODO: Your code here!
     // We'll need to loop over the neighbors that are the points adjacent to curState.
     // We need a collection of neighbors we're going to loop over.
-    
-    auto neighbors = curState.getAdjacentStates(); // Change this! This line is totally wrong.
-
-    // Hint: Look at PuzzleState.h
-    // =====================================================================
+    auto neighbors = curState.getAdjacentStates();
 
     for (auto neighbor : neighbors) {
 
-      // ==================================================================
-      // TODO: Your code here!
       // Check whether the neighbor has already been visited.
-      bool neighborWasAlreadyVisited = visitedSet.count(neighbor); // Change this...
-      // ==================================================================
+      bool neighborWasAlreadyVisited = visitedSet.count(neighbor);
 
       if (!neighborWasAlreadyVisited) {
-
-        // ================================================================
-        // TODO: Your code here!
 
         // Record that the curState is the predecessor of the neighbor point,
         // since curState has just led to the discovery of this neighbor for
@@ -534,8 +512,6 @@ std::list<PuzzleState> puzzleBFS(const PuzzleState& start, const PuzzleState& go
 
         // Push neighbor into the exploration queue.
         exploreQ.push(neighbor);
-
-        // ================================================================
 
         dist[neighbor] = dist[curState]+1;
         if (dist[neighbor] > maxDist) {
