@@ -166,7 +166,7 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
   // We'll hard-code a maximum distance for any shortest path through the graph
   // that we will consider before giving up. This isn't strictly necessary for
   // BFS to be correct; when a path can be found from start to goal, we'll find
-  // the shortest such path and we won't alwaysneed to visit all of the vertices
+  // the shortest such path and we won't always need to visit all of the vertices
   // before that happens anyway. But suppose the goal is unreachable from start;
   // then if the graph has a very large number of vertices, an unrestricted BFS
   // algorithm would have to explore all the reachable vertices before giving up
@@ -290,7 +290,7 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
     // TODO: Your code here!
     // We'll need to loop over the neighbors that are the points adjacent to curPoint.
     // Get a copy of the set of neighbors we're going to loop over.
-    GridGraph::NeighborSet neighbors; // Change this...
+    GridGraph::NeighborSet neighbors = graph.adjacencyMap.at(curPoint); // Change this...
     // =====================================================================
 
     for (auto neighbor : neighbors) {
@@ -298,7 +298,7 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
       // ==================================================================
       // TODO: Your code here!
       // Check whether the neighbor has already been visited.
-      bool neighborWasAlreadyVisited = false; // Change this...
+      bool neighborWasAlreadyVisited = visitedSet.count(neighbor); // Change this...
       // ==================================================================
 
       // If this adjacent vertex has NOT been visited before, we will visit it now.
@@ -312,14 +312,13 @@ std::list<IntPair> graphBFS(const IntPair& start, const IntPair& goal, const Gri
         // Record that the curPoint is the predecessor of the neighbor point,
         // since curPoint has just led to the discovery of this neighbor for
         // the first time.
-        // ...
+        pred[neighbor] = curPoint;
 
         // Add neighbor to the visited set.
-        // ...
-
+        visitedSet.insert(neighbor);
         // Push neighbor into the exploration queue.
-        // ...
-
+        exploreQ.push(neighbor);
+        
         // ================================================================
 
         // Check if we've taken too many steps so far.
